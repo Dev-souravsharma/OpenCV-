@@ -2,7 +2,7 @@ import cv2
 
 capture = cv2.VideoCapture(0)
 
-while True:
+while capture.isOpened():
     # capture frame
     ret, frame = capture.read()
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
