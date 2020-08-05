@@ -1,0 +1,22 @@
+import cv2
+
+capture = cv2.VideoCapture(0)
+# codec
+fourcc = cv2.VideoWriter_fourcc(*'XVID')
+# video writing 
+output = cv2.VideoWriter('sourav.avi', fourcc, 30.0, (640, 480))
+while capture.isOpened():
+    ret, frame = capture.read()
+    #if frame is captured then we save the file else break
+    if ret == True:
+        # saving frame
+        output.write(frame)
+        # showing frame
+        cv2.imshow('sourav', frame)
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
+    else:
+        break
+capture.release()
+output.release()
+cv2.destroyAllWindows()
